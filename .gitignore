@@ -15,6 +15,7 @@
 *.sublime-project
 *.local.tcp
 
+.lock
 /*.pdf
 thesis-template.fls
 thesis-template.fdb_latexmk
