@@ -67,28 +67,69 @@
 
 % Нужно помнить, что пользователем может быть не только <<менеджер>> или <<человек в белом халате>>, но и другой программист. Последнее относится, в первую очередь, к реализованным библиотекам. Для <<обычных>> приложений нередко бывают пользователи нескольких категорий --- например, обычный пользователь и администратор. Для каждой категории нужно описать, как выполняются основные функции, предпочтительно, с помощью серии скрин-шотов. Однако считается плохим тоном вставлять длинную вереницу из скрин-шотов: если их много, большую часть нужно выносить в приложение. Для \textit{этого} раздела нормальной является плотность скрин-шотов из расчета: 1 страница скрин-шотов на 1-2 страницы текста.
 
-\section{Сравнение разработанной системы с существующими}
+\section{Генерация тестовых данных}
 
 Проверить качество разработанной системы можно на искусственном наборе
-данных.
+данных. \ref{pic:example_data_formulas}
 
-\def\figurename{Формула}
+Имеет смысл использовать искусственные данные так как мы точно знаем
+зависимость между временными рядами.
+
+\def\figurename{Формулы}
 \begin{figure}[t]
-	\centering
-	$ x_1 = sin(10t) $,
-	$ x_2 = 0.1 sin(100t) $,
-	$ x_3 = -0.05 cos(100t) $,
-	$ x_4 = 0.5 t $,
-	$ x_5 =  $,
-	$ y =  $,
-	$ A_j(t+1) = p( A_j(t) + \sum_{i = 1, i \neq j}^{n} w_{ij} A_i(t) ) $,
+	\begin{center}
+	\begin{align*}
+		x_1 &= sin(10t) \\
+		x_2 &= 0.1 sin^2(100t) \\
+		x_3 &= -0.05 cos(30t)/5 \\
+		x_4 &= 0.5 t \\
+		x_5 &= x_2 + x_4\\
+		y   &= \frac{x_1}{5} + x_3 + x_4
+	\end{align*}
+	\end{center}
 	\caption{Формулы, по которым генерируется искусственный набор данных}
-	\label{img:concepts_recalc}
+	\label{pic:example_data_formulas}
 \end{figure}
 \noindent
 
+% todo мб добавить немного шума?
 
-![](img/example_data.png)
+\section{Тестирование разработанной системы}
+
+
+\def\figurename{Рис}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\columnwidth]{./img/lstmfcm_empty.png}
+	\includegraphics[width=0.9\columnwidth]{./img/lstmfcm_empty_prediction.png}
+	\caption{Карта без связей концептов}
+	\label{pic:lstmfcm_empty}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\columnwidth]{./img/lstmfcm_fc.png}
+	\includegraphics[width=0.9\columnwidth]{./img/lstmfcm_fc_prediction.png}
+	\caption{Полносвязная карта}
+	\label{pic:lstmfcm_fc}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{./img/lstmfcm_meaningful.png}
+	\includegraphics[width=0.9\textwidth]{./img/lstmfcm_meaningful_prediction.png}
+	\caption{Карта с осмысленно расставленными связями}
+	\label{pic:lstmfcm_meaningful}
+\end{figure}
+
+
+
+\section{Сравнение разработанной системы с существующими}
+
+Было реализовано несколько модификаций разрабатываемой системы, а также
+протестированы некоторые существующие системы для решения задачи прогнозирования.
+
+
 
 \section{Моделирование с помощью разработанной системы}
 \begin{annotation}
