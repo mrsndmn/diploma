@@ -55,16 +55,18 @@
 	\item мультипликативная сезонность
 \end{itemize}
 
+\def\figurename{Рис}
+\begin{figure}[t]%
+	\begin{center}
+	\includegraphics[width=.5\columnwidth]{./img/nasted_seasonality.png}%
+	\end{center}
+	\caption{Пример данных со вложенной сезонностью}%
+	\label{pic:nasted_seasonality}%
+\end{figure}
+
 Кроме того, сезонности могут быть вложенными \ref{nasted_seasonality}. Например, готовая сезонность, месячная,
 недельная, ежедневная.
 
-\def\figurename{Рис}
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{./img/nasted_seasonality.png}
-	\caption{Пример данных со вложенной сезонностью}
-	\label{pic:nasted_seasonality}
-\end{figure}
 
 
 Так же при анализе временных рядов нужно учитывать возможные выбросы.
@@ -127,7 +129,7 @@
 Чем больше значение $ \alpha $, тем больше сглаживается результат вычислений модели.
 
 \def\figurename{Формула}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	$ \hat{y_{t+1}} = \alpha y_t + (1 - \alpha)\hat{y_t} $,
 	\caption{

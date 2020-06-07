@@ -230,7 +230,7 @@ $ input_size $ -~ количество связей, которые входят
 
 % todo кажется, я это и не использовал
 \def\figurename{Формула}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	$ RMSSE = \sqrt{ \frac{ \frac{1}{h} \sum_{t=n+1}^{n+h}(Y_t - \hat{Y_t})^2  }{ \frac{1}{n-1} \sum_{t=2}^{n} (Y_t - Y_{t-1})^2 } } $,
 
@@ -258,7 +258,7 @@ $ input_size $ -~ количество связей, которые входят
 Она вычисляется по формуле \ref{wrmsse}
 
 \def\figurename{Формула}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	$ WRMSSE = \sum_{i=1}^{k} w_i * RMSSE_i $,
 	\caption{
@@ -280,9 +280,10 @@ $ input_size $ -~ количество связей, которые входят
 % todo не могу это объяснить!
 % https://youtu.be/u433nrxdf5k?t=1554
 \def\figurename{Формула}
-\begin{figure}
+\begin{figure}[t]
 	\centering
-	$ KPSS(y) = \frac{1}{T^{2} \lambda^2 } \sum^{T}_{i=1}{ \( \sum^{i}_{t=1}{y_t} \)^{2} } $,
+	% $ KPSS(y) = \frac{1}{T^{2} \lambda^2 } \sum^{T}_{i=1}{ \( \sum^{i}_{t=1}{y_t} \)^{2} } $,
+	$ KPSS(y) = \frac{1}{T^{2} \lambda^2 } \sum^{T}_{i=1}{ \sum^{i}_{t=1}{y_t} } $,
 	\caption{
 		Расчет критерия KPSS.
 	}
@@ -300,7 +301,7 @@ $ input_size $ -~ количество связей, которые входят
 
 % +1 в `k = ...` -- это, наверное, константа
 \def\figurename{Формула}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	$ AIC = 2k - 2 ln(L) $,
 	\caption{
