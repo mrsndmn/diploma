@@ -24,7 +24,7 @@
 
 \section{Состав и структура реализованного программного обеспечения}
 \begin{annotation}
-	В данном разделе рассматривается состав и структура реализованного программного обеспечения.
+	В данном разделе рассматривается состав ия структура реализованного программного обеспечения.
 	Приводятся характеристики разработанного программного продукта, возможности конфигурации отдельных
 	компонент системы. Описано назначение исполняемых файлов, описаны требования к системному окружению.
 \end{annotation}
@@ -34,7 +34,35 @@
 
 \section{Анализ данных}
 
+Для начала стоит проанализировать\ref{img:any_autocorrelation}
+
+Количество продаж \ref{img:all_sales}
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.4\columnwidth]{./img/sales_autocorrelation.png}
+	\includegraphics[width=0.4\columnwidth]{./img/sales_partial_autocorrelation.png}
+	\caption{Автокорреляция и частичная автокорреляция количества продаж}
+	\label{img:any_autocorrelation}
+\end{figure}
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{./img/all_sales.png}
+	\caption{Количество продаж}
+	\label{img:all_sales}
+\end{figure}
+
+
 \section{Построение модели}
+
+arima + lstm:
+фичей могут быть остатки arima
+или само предскзаание arima
+
+но не сработало!
 
 \section{Тестирование разработанной системы}
 
@@ -45,6 +73,8 @@
 	\item Карта с осмысленными связями.
 \end{itemize}
 
+% todo посмотреть, как модели обучились на тестовых данных
+
 Все карты обучались 100 эпох, имели размерность скрытого состояния 100,
 количество исторических данных, обрабатываемых с помощью LSTM на одной итерации -~ 100.
 Так же как и количество данных на выходе, сгенерированных.
@@ -53,18 +83,18 @@
 % Время обучения
 % Качество
 
-Карта без связей \ref{lstmfcm_empty}, обученная на тестовых данных
+Карта без связей \ref{img:lstmfcm_empty}, обученная на тестовых данных
 показала отличный результат для $ x_1, x_2, x_3, x_4  $. Однако ошибка
 для $ x_5, y $ довольно велика. Такие предсказания эквивалентны предсказаниям
 отдельно взятых моделей LSTM, обученных для предсказания временного ряда
 по истории только этого временного ряда.
 
-Карта, которая представляет из себя полносвязный граф \ref{pic:lstmfcm_fc},
+Карта, которая представляет из себя полносвязный граф \ref{img:lstmfcm_fc},
 из-за избыточности связи получила предсказания для $ x_1, x_2, x_3 $ даже
 хуже, чем карта без связей. Это можно объяснить излишней сложностью модели.
 Модель слишком усложнена и не может обучиться за заданное количество эпох.
 
-Карте с осмысленными связями \ref{lstmfcm_meaningful} удалось сохранить качество
+Карте с осмысленными связями \ref{img:lstmfcm_meaningful} удалось сохранить качество
 предсказаний для $ x_1 --- x_4 $ таким же, как и у карты без связей.
 А так же удалось получить улучшение предсказания для $ y $.
 Неожиданный результат получили для $ x_5 $. todo как так?
@@ -84,7 +114,7 @@ todo не понятно, почему их нет на предсказании
 	\includegraphics[width=0.7\columnwidth]{./img/lstmfcm_empty.png}
 	\includegraphics[width=0.9\columnwidth]{./img/lstmfcm_empty_prediction.png}
 	\caption{Карта без связей концептов}
-	\label{pic:lstmfcm_empty}
+	\label{img:lstmfcm_empty}
 \end{figure}
 
 \begin{figure}[t]
@@ -92,7 +122,7 @@ todo не понятно, почему их нет на предсказании
 	\includegraphics[width=0.7\columnwidth]{./img/lstmfcm_fc.png}
 	\includegraphics[width=0.9\columnwidth]{./img/lstmfcm_fc_prediction.png}
 	\caption{Полносвязная карта}
-	\label{pic:lstmfcm_fc}
+	\label{img:lstmfcm_fc}
 \end{figure}
 
 \begin{figure}[t]
@@ -100,7 +130,7 @@ todo не понятно, почему их нет на предсказании
 	\includegraphics[width=0.7\textwidth]{./img/lstmfcm_meaningful.png}
 	\includegraphics[width=0.9\textwidth]{./img/lstmfcm_meaningful_prediction.png}
 	\caption{Карта с осмысленно расставленными связями}
-	\label{pic:lstmfcm_meaningful}
+	\label{img:lstmfcm_meaningful}
 \end{figure}
 
 
@@ -109,7 +139,7 @@ todo не понятно, почему их нет на предсказании
 Была построена модель, основанная на LSTM,
 которая одновременно анализирует все временные ряды тестовых данных.
 
-Результат предсказаний такой модели представлен на рисунке \ref{lstm_only_prediction}.
+Результат предсказаний такой модели представлен на рисунке \ref{img:lstm_only_prediction}.
 Результат зашумлен по сравнению с предсказаниями карты (todo не могу объяснить).
 И в отличие от карты, даже с осмысленными связями, на этом предсказании не наблюдается скачков
 между итерациями предсказаний. И $ x_5 $ тоже удалось предсказать относительно успешно.
@@ -127,7 +157,7 @@ todo не понятно, почему их нет на предсказании
 	\centering
 	\includegraphics[width=0.9\textwidth]{./img/lstm_only_prediction.png}
 	\caption{LSTM only model prediction}
-	\label{pic:lstm_only_prediction}
+	\label{img:lstm_only_prediction}
 \end{figure}
 
 
