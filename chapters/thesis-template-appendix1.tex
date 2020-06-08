@@ -4,7 +4,7 @@
 \chapter{Приложение 1. Результаты экспериментов}
 
 \begin{table}%
-    \caption{Значения коэффициентов параметров ARIMAX(2, 0, 3)x(0, 1, 1, 7) с экзогенными переменными: индикатор дня недели и индикатор Рождества}\label{tbl:cmp-1}
+    \caption{Значения коэффициентов параметров ARIMAX(2, 0, 3)x(0, 1, 1, 7) с экзогенными переменными: индикатор дня недели и индикатор Рождества}
     \centering
     \begin{tabular}{|l|r||r|r|}
         \hline
@@ -30,6 +30,15 @@
     \end{tabular}
     \label{tbl:arimax_coeffs_exogen}
 \end{table}
+
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{./img/fcm_lstm_map.png}
+	\caption{Кривая потерь и предсказание LSTM-сети}
+	\label{img:fcm_lstm_map}
+\end{figure}
 
 % \end{figure}
 
