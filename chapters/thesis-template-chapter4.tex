@@ -34,18 +34,38 @@
 
 \section{Анализ данных}
 
-Для начала стоит проанализировать\ref{img:any_autocorrelation}
+Набор данных, на которых будет проводиться тестирование разработанной системы
+представляет из себя несколько $ csv $ файлов: файл с количеством продаж
+продуктов разных категорий в 3 магазинах за 5 лет начиная с 29.01.2011
+и файл с описанием праздников, которые выпадают на каждый день.
 
-Количество продаж \ref{img:all_sales}
+Требуется предсказать количество продаж на 30 дне вперед.
 
-\def\figurename{Рис}
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.4\columnwidth]{./img/sales_autocorrelation.png}
-	\includegraphics[width=0.4\columnwidth]{./img/sales_partial_autocorrelation.png}
-	\caption{Автокорреляция и частичная автокорреляция количества продаж}
-	\label{img:any_autocorrelation}
-\end{figure}
+Для начала можно провести качественный визуальный анализ данных.
+
+Общее количество продаж можно оценить на графике \ref{img:all_sales}.
+Из этого графика видно, что до середины 2012 года количество проданных
+товаров увеличивалось. Но после тренд пропал. В данных можно наблюдать
+как годичные, так и месячные и даже недельные сезонности. Каждый год
+в Рождество количество проданных товаров равно 0, потому что магазин не работает.
+По выходным количество проданных товаров больше, чем в будние дни.
+
+Количество проданных товаров по каждому магазину представлено на следующем графике \ref{img:sales_by_store}.
+В количестве проданных товаров отдельно по каждому магазину нет значительных отличий.
+Все магазины продают примерно одинаковое количество товаров.
+
+Количество продаж по категориям для каждого магазина на графику \ref{img:sales_by_store_by_cat}
+Во всех трех магазинах количество продаж товаров в категории "еда" больше всего,
+а товаров для дома меньше всего. Из данного графика можно заметить, что сезонность
+присутствует в графике по продаже товаров в категории "еда" и для товаров для дома, но
+для товаров для хобби сезонности не наблюдаются.
+
+Рассмотрим графики автокорреляции и частичной автокорреляции для общего количества продаж
+\ref{img:any_autocorrelation}.
+Для лагов 1, 2, 3, 6, 7 присутствует статически значимая частичная автокорреляция.
+Это может быть использовано при построении модели SARIMAX.
+На графики автокорреляции видны синусоидельные колебания. Это свидетельствует и подтверждает,
+что в данных есть сезонность.
 
 \def\figurename{Рис}
 \begin{figure}[t]
@@ -54,6 +74,38 @@
 	\caption{Количество продаж}
 	\label{img:all_sales}
 \end{figure}
+
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.25\columnwidth]{./img/store_tx1_total.png}
+	\includegraphics[width=0.25\columnwidth]{./img/store_tx2_total.png}
+	\includegraphics[width=0.25\columnwidth]{./img/store_tx3_total.png}
+	\caption{Общее количество продаж по каждому магазину}
+	\label{img:sales_by_store}
+\end{figure}
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.25\columnwidth]{./img/store_tx1_by_cats.png}
+	\includegraphics[width=0.25\columnwidth]{./img/store_tx2_by_cats.png}
+	\includegraphics[width=0.25\columnwidth]{./img/store_tx3_by_cats.png}
+	\caption{Количество продаж товаров определенной категории для каждого магазина}
+	\label{img:sales_by_store_by_cat}
+\end{figure}
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.4\columnwidth]{./img/sales_autocorrelation.png}
+	\includegraphics[width=0.4\columnwidth]{./img/sales_partial_autocorrelation.png}
+	\caption{Автокорреляция и частичная автокорреляция для общего количества продаж}
+	\label{img:any_autocorrelation}
+\end{figure}
+
+
 
 
 \section{Построение модели}
