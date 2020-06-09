@@ -1,7 +1,16 @@
 ﻿
 
-% \begin{figure}
 \chapter{Приложение 1. Результаты экспериментов}
+
+
+\def\figurename{Рис}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.5\columnwidth]{./img/fcm_lstm_map.png}
+	\caption{Граф когнитивной карты для моделирования общего количества продаж с разбивкой по магазинам и категории товаров}
+	\label{img:fcm_lstm_map}
+\end{figure}
+
 
 \begin{table}%
     \caption{Значения коэффициентов параметров ARIMAX(2, 0, 3)x(0, 1, 1, 7) с экзогенными переменными: индикатор дня недели и индикатор Рождества}
@@ -31,14 +40,6 @@
     \label{tbl:arimax_coeffs_exogen}
 \end{table}
 
-
-\def\figurename{Рис}
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{./img/fcm_lstm_map.png}
-	\caption{Граф когнитивной карты для моделирования общего количества продаж с разбивкой по магазинам и категории товаров}
-	\label{img:fcm_lstm_map}
-\end{figure}
 
 % \end{figure}
 
