@@ -152,19 +152,19 @@
 В данной работе будет построена упрощенная модель карты для предсказания количества продаж.
 Но влияние экзогенных параметров будет исследовано на других моделях.
 
-Общего количества продаж складывается из сумм продаж
-по в каждом магазине. А продажи в каждом магазине складываются из продаж
-товаров каждой категории \ref{img:sales_simple_model}.
+Общее количества продаж складывается из сумм продаж
+по в каждом магазине:
 
-\def\figurename{Формула}
-\begin{figure}[t]
-	\centering
-	$ SALES\_TOTAL = \sum_{i=1}^{N} STORE\_SALES_{i} $,
-	$ STORE\_SALES\_{i} = \sum_{j=1}^{M} CATEGORY\_SALES_{i,j} $,
-	\caption{}
-	\label{img:sales_simple_model}
-\end{figure}
-\def\figurename{Рис.}
+\begin{equation}\label{eq:sales_total_simple_model}
+	STORE\_SALES\_{i} = \sum_{j=1}^{M} CATEGORY\_SALES_{i,j}
+\end{equation}
+
+\noindent A продажи в каждом магазине складываются из продаж
+товаров каждой категории:
+
+\begin{equation}\label{eq:store_sales_simple_model}
+	STORE\_SALES\_{i} = \sum_{j=1}^{M} CATEGORY\_SALES_{i,j}
+\end{equation}
 
 Тогда когнитивная карта будет содержать следующие вершины:
 
