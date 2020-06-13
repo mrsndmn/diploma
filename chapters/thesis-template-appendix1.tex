@@ -1,6 +1,6 @@
 ﻿\chapter{Приложение 1. Результаты экспериментов}
 
-\begin{table}%
+\begin{table}[h]%
     \caption{Значения коэффициентов параметров ARIMAX(2, 0, 3)x(0, 1, 1, 7) с экзогенными переменными: индикатор дня недели и индикатор Рождества}
     \centering
     \begin{tabular}{|l|r||r|r|}
@@ -30,14 +30,14 @@
 
 
 \def\figurename{Рис}
-\begin{figure}[t]
+\begin{figure}[h]
 	\centering
 	\includegraphics[height=10cm]{./img/fcm_losses.png}
 	\caption{Графики значений функции потерь для FCM-LSTM. Каждый концепт обучался 20 эпох.}
 	\label{img:fcm_losses}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h]
 	\centering
 	\includegraphics[height=10cm]{./img/plot_concept_history.png}
 	\caption{Результат работы метода plot\_concept\_history для карты, обученной на 80 точках исследуемых данных.}
